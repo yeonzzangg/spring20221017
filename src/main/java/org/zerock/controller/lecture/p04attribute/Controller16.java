@@ -1,4 +1,4 @@
-package org.zerock.controller.lecture.p04;
+package org.zerock.controller.lecture.p04attribute;
 
 import javax.servlet.http.HttpServletRequest;
 

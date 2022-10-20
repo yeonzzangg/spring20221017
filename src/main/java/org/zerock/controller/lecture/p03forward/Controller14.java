@@ -22,7 +22,8 @@ public class Controller14 {
 	@RequestMapping("sub01")
 	public void method1(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		System.out.println("메소드1번 일함");
-		String path = "/WEB-INF/views/ex14/sub01.jsp";
+		
+		String path = "/WEB-INF/views/ex14/sub01.jsp"; // sub01 없음
 		req.getRequestDispatcher(path).forward(req, res);
 	}
 	

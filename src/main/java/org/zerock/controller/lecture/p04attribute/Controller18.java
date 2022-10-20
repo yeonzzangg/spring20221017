@@ -1,4 +1,4 @@
-package org.zerock.controller.lecture.p04;
+package org.zerock.controller.lecture.p04attribute;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;

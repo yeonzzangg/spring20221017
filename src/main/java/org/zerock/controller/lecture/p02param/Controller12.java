@@ -36,7 +36,7 @@ public class Controller12 {
 		System.out.println(city);
 	}
 	
-	// 위 3개의 @RequestParam value attribute 생략 가능
+	// 위 3개의 @RequestParam("value attribute") 생략 가능
 	
 	@RequestMapping("sub04")
 	public void method4(String name, String address, int age, String email, String password) {

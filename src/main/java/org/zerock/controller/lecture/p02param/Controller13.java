@@ -31,7 +31,8 @@ public class Controller13 {
 	}
 	
 	@RequestMapping("sub03")
-	public void method3(@ModelAttribute JavaBean03 params) {// @RequestParam XXX 기본형 아니라서
+	// @RequestParam XXX -> 기본타입 아니라서
+	public void method3(@ModelAttribute JavaBean03 params) {
 		System.out.println(params);
 	}
 }
