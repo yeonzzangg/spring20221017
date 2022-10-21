@@ -26,7 +26,7 @@ public class Controller11 {
 		@GetMapping("sub03")
 		public void method3(String address) {
 			// 메소드 파라미터가 기본타입(8개, 또는 wrapper), String이면
-			// @RequestParam이 붙은 것으로 간주
+			// @RequestParam이 붙은 것으로 간주 = 생략가능
 			System.out.println(address);
 		}
 		
