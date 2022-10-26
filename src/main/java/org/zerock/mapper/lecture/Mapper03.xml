@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.zerock.mapper.lecture.Mapper03">
+
+	<!-- 여러 column은 map으로 -->
+	<select id="getCustomer" resultMap="customerNameCountryMap">
+		SELECT CustomerName, Country
+		FROM Customers
+		WHERE CustomerID = 77
+	</select>
+	<!-- <result column="컬럼명" property="자바빈 프로퍼티명"/> -->
+	<resultMap type="org.zerock.domain.lecture.JavaBean04" id="customerNameCountryMap">
+		<result column="CustomerName" property="name"/>
+		<result column="Country" property="country"/>
+	</resultMap>
+	
+	
+	
+	<select id="getEmployee" resultMap="employeeNameMap">
+		SELECT FirstName, LastName
+		FROM Employees
+		WHERE EmployeeID = 5
+	</select>
+
+	<resultMap type="org.zerock.domain.lecture.JavaBean05" id="employeeNameMap">
+		<result column="FirstName" property="firstName"/>
+		<result column="LastName" property="lastName"/>
+	</resultMap>
+	
+	
+	
+	
+	<!-- 컬럼명과 자바빈 프로퍼티명 같으면 <resultMap>생략가능  -->
+	<!-- <resultMap>생략했으니까 <resulteType>으로 자바빈 경로  -->
+	<select id="getEmployee2" resultType="org.zerock.domain.lecture.JavaBean05">
+		SELECT FirstName, LastName
+		FROM Employees
+		WHERE EmployeeID = 3	
+	</select>
+	
+	
+	
+	<!-- name -> JavaBean04.setName()
+	별명으로 자바빈이랑 이름 같게~~ -->
+	<select id="getCustomer2" resultType="org.zerock.domain.lecture.JavaBean04">
+		SELECT 
+			CustomerName name,
+			Country
+		FROM 
+		    Customers
+		WHERE 
+		    CustomerId = 55
+	</select>
+	
+	
+	
+	<select id="getProduct" resultType="org.zerock.domain.lecture.JavaBean06">
+		SELECT 
+			ProductName name,
+			Price price
+		FROM 
+		    Products
+		WHERE 
+		    ProductId = 8
+	</select>
+</mapper>
+
+
+
+
+
+
