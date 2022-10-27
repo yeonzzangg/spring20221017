@@ -21,7 +21,7 @@ public class Controller09 {
 	
 	// name request param 받아서 출력 
 	@GetMapping("sub02")
-	public void method2(@RequestParam(name = "name") String p) {
+	public void method2(@RequestParam(name = "name") String p) { //value, name 둘중 아무거나
 		System.out.println("name : " + p);
 	}
 	
