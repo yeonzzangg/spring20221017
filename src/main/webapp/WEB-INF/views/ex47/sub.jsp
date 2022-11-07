@@ -106,7 +106,7 @@ document.querySelector("#btn15").addEventListener("click", function() {
 	fetch(ctx + "/ex47/sub15/" + id, {
 		method : "delete"
 	})
-	.then(res => res.json())
+	.then(res => res.json()) 
 	.then(data => {
 		document.querySelector("#messageDiv").innerText = data.message;
 	});
