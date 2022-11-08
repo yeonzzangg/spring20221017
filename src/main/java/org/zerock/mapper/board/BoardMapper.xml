@@ -5,18 +5,32 @@
   
 <mapper namespace="org.zerock.mapper.board.BoardMapper">
 
+	<insert id="insertFile">
+	INSERT INTO File (boardId, name)
+	VALUES (#{id}, #{fileName})
+	</insert>
+
 	<select id="countAll" resultType="int">
 	SELECT COUNT(*) FROM Board
 	WHERE
-		title LIKE #{keyword}
-		OR content LIKE #{keyword}
-		OR writer LIKE #{keyword}
+		<trim prefixOverrides="OR">
+			<if test="type == 'all' or type == 'title'">
+			OR title LIKE #{keyword}
+			</if>
+			
+			<if test="type == 'all' or type == 'content'">
+			OR content LIKE #{keyword}
+			</if>
+			
+			<if test="type == 'all' or type == 'writer'">
+			OR writer LIKE #{keyword}
+			</if>
+		</trim>
 	</select>
 
-	<insert id="insert">
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id"> 
 	INSERT INTO Board (title, content, writer)
 	VALUES (#{title}, #{content}, #{writer})
-	
 	</insert>
 	
 	<select id="list" resultType="org.zerock.domain.board.BoardDto">
