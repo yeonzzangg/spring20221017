@@ -161,6 +161,8 @@ function readReplyAndSetModalForm(id) {
 	});
 }
 
+
+//리스트
 function listReply() {
 	const boardId = document.querySelector("#boardId").value;
 	fetch(`\${ctx}/reply/list/\${boardId}`)
@@ -211,6 +213,8 @@ function removeReply(replyId) {
 	.then(() => listReply());
 }
 
+
+// 댓글 쓰기
 document.querySelector("#replySendButton1").addEventListener("click", function() {
 	const boardId = document.querySelector("#boardId").value;
 	const content = document.querySelector("#replyInput1").value;
