@@ -46,6 +46,9 @@
 									<a href="${getLink }">
 										${board.title }
 									</a>
+									<c:if test="${board.countReply > 0 }">
+										댓글 : ${board.countReply }
+									</c:if>
 								</td>
 								<td>${board.writer }</td>
 								<td>${board.inserted }</td>
