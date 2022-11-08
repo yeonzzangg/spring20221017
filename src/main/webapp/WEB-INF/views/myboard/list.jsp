@@ -11,14 +11,27 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-	<h1>게시물 작성</h1>
-	
-	<form action="" method="post">
-		제목 <input type="text" name="title"><br>
-		본문 <textarea name="content"></textarea><br>
-		작성자 <input type="text" name="writer"><br>
-		<input type="submit" value="등록">
-	</form>
+	<h1>게시물 목록</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>작성일시</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${boardList}" var="board">
+					<tr>
+						<td>${board.id }</td>
+						<td>${board.title }</td>
+						<td>${board.writer }</td>
+						<td>${board.inserted }</td>
+					</tr>
+				</c:forEach> 
+			</tbody>
+		</table>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 </html>

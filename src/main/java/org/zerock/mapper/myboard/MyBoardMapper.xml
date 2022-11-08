@@ -5,10 +5,19 @@
   
 <mapper namespace="org.zerock.mapper.myboard.MyBoardMapper">
 
-	<insert id="insert">
-INSERT INTO Board (title, content)
-VALUES (#{title}, #{content})
-	</insert>
+
+	<!-- 글 작성 -->
+	<select id="insert">
+		INSERT INTO Board (title, content, writer)
+		VALUES (#{title}, #{content}, #{writer})
+	</select>
+	
+	<!-- 글 목록 -->
+	<select id="list" resultType="org.zerock.domain.myboard.MyBoardDto">
+		SELECT id, title, writer, inserted
+		FROM Board
+		ORDER BY id DESC;
+	</select>
 
 
 </mapper>
