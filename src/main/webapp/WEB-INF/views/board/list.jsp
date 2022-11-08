@@ -46,8 +46,12 @@
 									<a href="${getLink }">
 										${board.title }
 									</a>
+									
 									<c:if test="${board.countReply > 0 }">
-										댓글 : ${board.countReply }
+										<span class="badge rounded-pill text-bg-light">
+											<i class="fa-regular fa-comment-dots"></i>
+											${board.countReply }
+										</span>
 									</c:if>
 								</td>
 								<td>${board.writer }</td>
@@ -63,7 +67,7 @@
 		<div class="row">
 			<div class="col">
 				<nav class="mt-3" aria-label="Page navigation example">
-				  <ul class="pagination justify-content-center" >
+				  <ul class="pagination justify-content-center">
 				  
 				  	<%-- 맨앞 버튼은 1페이지가 아니면 존재함 --%>
 				  	<c:if test="${pageInfo.currentPageNumber ne 1 }">
@@ -80,7 +84,6 @@
 						</li>
 				  	</c:if>
 				  	
-				  	<!-- 이전 버튼 -->
 				  	<c:if test="${pageInfo.hasPrevButton }">
 				  		<c:url value="/board/list" var="listLink">
 				  			<c:param name="page" value="${pageInfo.jumpPrevPageNumber }"></c:param>
@@ -94,7 +97,6 @@
 				  		</li>
 				  	</c:if>
 				  
-				  <!-- 페이지 -->
 				  	<c:forEach begin="${pageInfo.leftPageNumber }" end="${pageInfo.rightPageNumber }" var="pageNumber">
 				  		<c:url value="/board/list" var="listLink">
 				  			<c:param name="page" value="${pageNumber }" />
@@ -109,7 +111,6 @@
 					    "><a class="page-link" href="${listLink }">${pageNumber }</a></li>
 				  	</c:forEach>
 				  	
-				  	<!-- 다음버튼 -->
 				  	<c:if test="${pageInfo.hasNextButton }">
 				  		<c:url value="/board/list" var="listLink">
 				  			<c:param name="page" value="${pageInfo.jumpNextPageNumber }"></c:param>

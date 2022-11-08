@@ -30,7 +30,7 @@
 					
 					<div id="mb-3">
 						<label for="">파일</label>
-						<input type="file" class="form-control" name="file">
+						<input multiple="multiple" type="file" class="form-control" name="file">
 					</div>
 					
 					<div class="mb-3">
