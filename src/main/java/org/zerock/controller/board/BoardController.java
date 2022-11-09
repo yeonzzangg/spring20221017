@@ -119,9 +119,11 @@ public class BoardController {
 	@PostMapping("modify")
 	public String modify(BoardDto board, 
 			@RequestParam("files") MultipartFile[] files,
+			@RequestParam(name = "removeFiles", required = false) List<String> removeFiles,
 			RedirectAttributes rttr) {
+
 		
-		int cnt = service.update(board, files);
+		int cnt = service.update(board, files, removeFiles);
 		
 		if (cnt == 1) {
 			rttr.addFlashAttribute("message", board.getId() + "번 게시물이 수정되었습니다.");
