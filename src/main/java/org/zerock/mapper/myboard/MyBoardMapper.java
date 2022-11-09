@@ -11,4 +11,7 @@ public interface MyBoardMapper {
 	// 글목록
 	List<MyBoardDto> list();
 
+	// 게시글 아이디 얻기
+	MyBoardDto select(int id);
+
 }

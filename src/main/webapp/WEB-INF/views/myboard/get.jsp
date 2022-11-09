@@ -11,34 +11,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-	<h1>게시물 목록</h1>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>#</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>작성일시</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${boardList}" var="board">
-					<tr>
-						<td>${board.id }</td>
-						<td>
-							<c:url value="/myboard/get" var="getLink">
-								<c:param name="id" value="${board.id }"></c:param>
-							</c:url>
-							<a href="${getLink }">
-								${board.title }
-							</a> 
-						</td>
-						<td>${board.writer }</td>
-						<td>${board.inserted }</td>
-					</tr>
-				</c:forEach> 
-			</tbody>
-		</table>
+	<h1>${board.id }번 게시물</h1>
+	제목 <input type="text" value="${board.title }" readonly> <br>
+	본문 <textarea readonly>${board.content }</textarea> <br>
+	작성자 <input type="text" value="${board.writer }" readonly> <br>
+	작성일시 <input type="datetime-local" value="${board.inserted }" readonly>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 </html>

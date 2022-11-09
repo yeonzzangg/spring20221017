@@ -24,4 +24,9 @@ public class MyBoardService {
 	public List<MyBoardDto> listBoard() {
 		return mapper.list();
 	}
+
+
+	public MyBoardDto get(int id) {
+		return mapper.select(id);
+	}
 }
