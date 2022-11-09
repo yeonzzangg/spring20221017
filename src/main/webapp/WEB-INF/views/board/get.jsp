@@ -43,16 +43,15 @@
 					<textarea rows="5" class="form-control" readonly>${board.content }</textarea>
 				</div>
 				
-				<!-- 이미지 출력 -->
+				<%-- 이미지 출력 --%>
 				<div>
 					<c:forEach items="${board.fileName }" var="name">
 						<div>
-							<img class="img-fluid img-thumbnail"
-								src="/image/${board.id }/${board.fileName}" alt="">
+							<img class="img-fluid img-thumbnail" src="/image/${board.id }/${name}" alt="">
 						</div>
-					</c:forEach>
+					</c:forEach>		
 				</div>
-
+				
 				<div class="mb-3">
 					<label for="" class="form-label">
 						작성자 

@@ -1,7 +1,6 @@
 package org.zerock.service.board;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,7 @@ import org.zerock.mapper.board.BoardMapper;
 import org.zerock.mapper.board.ReplyMapper;
 
 @Service
-public class BoardService {
+public class BoardSerivce {
 
 	@Autowired
 	private BoardMapper boardMapper;
@@ -27,22 +26,22 @@ public class BoardService {
 		// db에 게시물 정보 저장
 		int cnt = boardMapper.insert(board);
 		
-		for(MultipartFile file : files) {
+		for (MultipartFile file : files) {
 			if (file != null && file.getSize() > 0) {
 				// db에 파일 정보 저장
 				boardMapper.insertFile(board.getId(), file.getOriginalFilename());
 				
 				// 파일 저장
 				// board id 이름의 새폴더 만들기
-				File folder = 
-						new File("C:\\Users\\user\\Desktop\\study\\upload\\prj1\\board\\" + board.getId());
-				folder.mkdir();
+				File folder = new File("C:\\Users\\user\\Desktop\\study\\upload\\prj1\\board\\" + board.getId());
+				folder.mkdirs();
 				
 				File dest = new File(folder, file.getOriginalFilename());
 				
 				try {
 					file.transferTo(dest);
 				} catch (Exception e) {
+					// @Transactional은 RuntimeException에서만 rollback 됨
 					e.printStackTrace();
 					throw new RuntimeException(e);
 				}
@@ -89,13 +88,33 @@ public class BoardService {
 		return boardMapper.select(id);
 	}
 
-	public int update(BoardDto board) {
+	public int update(BoardDto board, MultipartFile[] files) {
+		// File table에 해당파일명 지우기
+		
+		// File table에 파일명 추가
+		
+		// 저장소에 실제 파일 추가
 		
 		return boardMapper.update(board);	
 	}
 
 	@Transactional
 	public int remove(int id) {
+		// 저장소의 파일 지우기
+		String path = "C:\\Users\\user\\Desktop\\study\\upload\\prj1\\board\\" + id;
+		File folder = new File(path);
+		
+		File[] listFiles = folder.listFiles();
+		
+		for(File file : listFiles) {
+			file.delete();
+		}
+		folder.delete();
+		
+		// db 파일 records 지우기
+		boardMapper.deleteFileByBoardId(id);
+		
+		
 		// 게시물의 댓글들 지우기
 		replyMapper.deleteByBoardId(id);
 		

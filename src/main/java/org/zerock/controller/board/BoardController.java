@@ -13,14 +13,14 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.board.BoardDto;
 import org.zerock.domain.board.PageInfo;
-import org.zerock.service.board.BoardService;
+import org.zerock.service.board.BoardSerivce;
 
 @Controller
 @RequestMapping("board")
 public class BoardController {
 	
 	@Autowired
-	private BoardService service;
+	private BoardSerivce service;
 
 	@GetMapping("register")
 	public void register() {
@@ -117,8 +117,11 @@ public class BoardController {
 	}
 	
 	@PostMapping("modify")
-	public String modify(BoardDto board, RedirectAttributes rttr) {
-		int cnt = service.update(board);
+	public String modify(BoardDto board, 
+			@RequestParam("files") MultipartFile[] files,
+			RedirectAttributes rttr) {
+		
+		int cnt = service.update(board, files);
 		
 		if (cnt == 1) {
 			rttr.addFlashAttribute("message", board.getId() + "번 게시물이 수정되었습니다.");
