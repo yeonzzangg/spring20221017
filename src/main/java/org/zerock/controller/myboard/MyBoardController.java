@@ -35,21 +35,29 @@ public class MyBoardController {
 	}
 	
 	@GetMapping("list")
-	public void list(Model model) {
+	public void list(Model model) { //request param
+		
+		// business logic
 		List<MyBoardDto> list = service.listBoard();
 		
 		// add attribute
 		model.addAttribute("boardList", list);
+		
 		// forward
 	}
 	
 	@GetMapping("get")
-	public void get(@RequestParam(name = "id") int id, Model model) {
+//	public void get(@RequestParam(name = "id") int id, Model model) { 생략가능
+	public void get(int id, Model model) { // req param
+		
 		// 비즈니스 로직 (게시물 db에서 가져오기)
 		MyBoardDto board = service.get(id);
 		System.out.println(board);
 		
+		// add attribute
 		model.addAttribute("board", board);
+		
+		// forward
 	}
 
 }

@@ -26,7 +26,7 @@
 					<tr>
 						<td>${board.id }</td>
 						<td>
-							<c:url value="/myboard/get" var="getLink">
+							<c:url value="/myboard/get" var="getLink"> <!-- 인코딩 안해도 되는 방식 -->
 								<c:param name="id" value="${board.id }"></c:param>
 							</c:url>
 							<a href="${getLink }">

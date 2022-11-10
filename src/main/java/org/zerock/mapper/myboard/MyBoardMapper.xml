@@ -5,6 +5,7 @@
   
 <mapper namespace="org.zerock.mapper.myboard.MyBoardMapper">
 	
+	<!-- 글 읽기 -->
 	<select id="select" resultType="org.zerock.domain.myboard.MyBoardDto">
 	SELECT
 		id,
@@ -19,7 +20,7 @@
 	</select>
 
 	<!-- 글 목록 -->
-	<select id="list" resultType="org.zerock.domain.myboard.MyBoardDto">
+	<select id="list" resultType="org.zerock.domain.myboard.MyBoardDto"> <!--  -->
 		SELECT id, title, writer, inserted
 		FROM Board
 		ORDER BY id DESC;
