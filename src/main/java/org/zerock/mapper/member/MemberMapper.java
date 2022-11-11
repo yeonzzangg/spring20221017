@@ -6,10 +6,14 @@ import org.zerock.domain.member.MemberDto;
 
 public interface MemberMapper {
 
-	List<String> seletAll();
-
 	int insert(MemberDto member);
 
-	
-	
+	List<MemberDto> selectAll();
+
+	MemberDto selectById(String id);
+
+	int update(MemberDto member);
+
+	int deleteById(String id);
+
 }
