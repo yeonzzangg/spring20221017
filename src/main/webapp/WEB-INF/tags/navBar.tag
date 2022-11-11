@@ -11,8 +11,11 @@
 
 <c:url value="/board/list" var="listLink" />
 <c:url value="/board/register" var="registerLink" />
+<c:url value="/member/signup" var="signupLink" />
+<c:url value="/member/list" var="memberListLink" />
 
-<nav class="navbar navbar-expand-md bg-light">
+
+<nav class="navbar navbar-expand-md bg-light mb-3">
   <div class="container-md">
     <a class="navbar-brand" href="${listLink }">게시판</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,6 +28,12 @@
         </li>
         <li class="nav-item">
           <a class="nav-link ${active eq 'register' ? 'active' : '' }" href="${registerLink }">작성</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link ${active eq 'memberList' ? 'active' : '' }" href="${memberListLink }">회원목록</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link ${active eq 'signup' ? 'active' : '' }" href="${signupLink }">회원가입</a>
         </li>
         
       </ul>
